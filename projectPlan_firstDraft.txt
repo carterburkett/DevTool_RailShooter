@@ -1,0 +1,37 @@
+Carter Burkett
+Professor Nelson Lim
+ANGM 3368.001
+April 10, 2024
+Project 03A: Planning Document
+
+Dev Tool: Rail shooter camera movement and game object navigation system
+Function: 
+Moves Game objects (and consequently a camera) along a set of user defined waypoints. Variables such as travel speed, acceleration, basic user input/manipulation, and (hopefully) path arc will be accommodated in the editor with a custom menu.
+This tool will aid in making Starfox 64 style levels by providing developers with the ability to swiftly place down and manipulate way points
+
+Core Elements:
+Ability to add, place, and view waypoints in the Unity Editor and scene window
+Ability to Control sharpness of path with a modifying factor defined in the editor
+Ability to Control the min/max speed of the game object as it moves along the rail
+Functional with Player controller element built for the level.
+The system will be able to work around Maps and objects.
+
+Implementation Steps and organization:
+0)	Create Editor GUI script(s) along the way, preferably using GUI Drawer
+	a.	If possible, I’d like to make the path at least roughly visible in the editor using gizmos.
+1)	Create basic player controller for the rail system
+	a.	camera movement w/ mouse, acceleration control, lateral and vertical movement manipulation within developer defined range (player can’t just leave the rail), other movement mechanics that may end up being necessary.
+2)	Create system/script that holds waypoint locations.
+	a.	Will accept and store transform data of game objects
+	b.	May spawn a new game object on top of previously placed object to streamline process for developer
+3)	Create Basic Rail movement system.
+	a.	Will likely use a hierarchy of game objects[spawn w/ separate script?]
+		i.	Parent object that lerps and rotates based off of the rail system
+		ii.	Child objects for player object and camera
+		iii.	(this is probably? An oversimplification but also the realistic starting point)
+4)	Fine tune Rail Movement [some combination of the following]
+	a.	Bezier, sine, cos, curves to soften travel b/w way points
+		i.	If possible, I want to avoid the player object moving at harsh angles (unless the developer specifically wants that).
+	b.	Camera dampening/camera focus option (ability to strip player controls at certain way points to focus player camera on event or target)
+		i.	This is not to say I’m going to create a system for focusing on another camera target as well, just creating the ability to lock player controls.
+	c.	Other QoL additions as needed/possible
